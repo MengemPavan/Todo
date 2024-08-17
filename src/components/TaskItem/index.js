@@ -1,14 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteNote } from '../../Store/notesSlice';
 
-function TaskItem({ note, deleteNote }) {
+const NoteItem = ({ note }) => {
+  const dispatch = useDispatch();
+
   return (
-    <div className="note">
-      <h2>{note.title}</h2>
-      <p>{note.content}</p>
-      <small>{note.label}</small>
-      <button onClick={() => deleteNote(note.id)}>Delete</button>
+    <div className="note-item">
+      <h3>{note.title}</h3>
+      <p>{note.description}</p>
+      {note.labels && (
+        <div className="labels">
+          {note.labels.map((label, index) => (
+            <span key={index} className="label">{label}</span>
+          ))}
+        </div>
+      )}
+      <button onClick={() => dispatch(deleteNote(note.id))}>Delete</button>
     </div>
   );
-}
+};
 
-export default TaskItem;
+export default NoteItem;

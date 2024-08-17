@@ -1,44 +1,74 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNote } from '../../Store/notesSlice';
+import "./index.css"
 
-function TaskForm({ addNote, labels }) {
+const AddNote = () => {
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [selectedLabel, setSelectedLabel] = useState('');
+  const [description, setDescription] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState([]);
+  const dispatch = useDispatch();
+  const labels = useSelector((state) => state.labels || []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (title || content) {
-      addNote({ id: Date.now(), title, content, label: selectedLabel });
-      setTitle('');
-      setContent('');
-      setSelectedLabel('');
-    }
+  const handleLabelChange = (labelId) => {
+    setSelectedLabels((prevLabels) =>
+      prevLabels.includes(labelId)
+        ? prevLabels.filter((id) => id !== labelId)
+        : [...prevLabels, labelId]
+    );
+  };
+  const isFormValid = title.trim() !== '' && description.trim() !== '';
+  const handleSubmit = () => {
+    dispatch(addNote({ title, description, labels: selectedLabels }));
+    setTitle('');
+    setDescription('');
+    setSelectedLabels([]);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="note-form">
+    <div className="TaskForm-container">
+     <div>
+     <p >ADD A TODO</p>
+     </div>
+      <div className="input-container">
       <input
         type="text"
+        placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
       />
       <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Take a note..."
+        
+        placeholder="Task description..."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       />
-      <select value={selectedLabel} onChange={(e) => setSelectedLabel(e.target.value)}>
-        <option value="">Select label</option>
+      </div>
+      <div className="labels-selection">
         {labels.map((label) => (
-          <option key={label} value={label}>
-            {label}
-          </option>
+          <button
+            key={label.id}
+            onClick={() => handleLabelChange(label.name)}
+            style={{
+              backgroundColor: selectedLabels.includes(label.name)
+                ? '#00f' // Selected label color
+                : '#ccc', // Default color
+              color: selectedLabels.includes(label.id)
+                ? '#fff' // Text color when selected
+                : '#000', // Default text color
+              border: 'none',
+              padding: '5px 10px',
+              margin: '5px',
+              cursor: 'pointer',
+            }}
+          >
+            {label.name}
+          </button>
         ))}
-      </select>
-      <button type="submit">Add Note</button>
-    </form>
+      </div>
+      <button className='btn' disabled={!isFormValid}  onClick={handleSubmit}>Add</button>
+    </div>
   );
-}
+};
 
-export default TaskForm;
+export default AddNote;

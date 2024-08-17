@@ -1,16 +1,10 @@
 import React from 'react';
+import { FaStickyNote } from 'react-icons/fa';
 
-function Sidebar({ labels, setFilteredLabel }) {
-  return (
-    <div className="sidebar">
-      <button onClick={() => setFilteredLabel(null)}>All Notes</button>
-      {labels.map((label) => (
-        <button key={label} onClick={() => setFilteredLabel(label)}>
-          {label}
-        </button>
-      ))}
-    </div>
-  );
-}
+const Sidebar = () => (
+  <div className="sidebar">
+    <FaStickyNote /> Notes
+  </div>
+);
 
 export default Sidebar;

@@ -1,33 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import LabelManager from './components/LabelManager';
-import TaskForm from './components/TaskForm';
-import TaskList from './components/TaskList';
-
+import AddNote from './components/TaskForm';
+import NoteList from './components/TaskList';
+import './App.css';
+import AddLabel from './components/AddLabel/AddLabel';
 
 function App() {
-  const [notes, setNotes] = useState([]);
-  const [labels, setLabels] = useState([]);
-  const [filteredLabel, setFilteredLabel] = useState(null);
-
-  const addNote = (note) => {
-    setNotes([...notes, note]);
-  };
-
   return (
-    <div className="App">
+    <div className="app">
       <Header />
+      <Sidebar />
       <div className="main-content">
-        <Sidebar labels={labels} setFilteredLabel={setFilteredLabel} />
-        <div className="note-section">
-          <LabelManager labels={labels} setLabels={setLabels} />
-          <TaskForm addNote={addNote} labels={labels} />
-          <TaskList notes={notes} setNotes={setNotes} filteredLabel={filteredLabel} />
-        </div>
+        <AddNote />
+        <AddLabel />
+        <NoteList />
       </div>
     </div>
   );
 }
 
 export default App;
+
+
+
