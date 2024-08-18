@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilterLabel } from "../../Store/labelSlice";
 import { FaStickyNote } from 'react-icons/fa';
+import { FaPencil } from 'react-icons/fa6';
+import { MdLabel } from "react-icons/md";
+
+
 import './index.css';
 
 const Sidebar = () => {
@@ -22,8 +26,10 @@ const Sidebar = () => {
     <div className="sidebar">
       <nav className="sidebar-nav">
         <ul className="label-list">
-        <Link to="/" className="sidebar-link">Home</Link>
-        <Link to="/edit-labels" className="sidebar-link">Edit Labels</Link>
+        <Link to="/" className="sidebar-link">Todos 
+            <FaStickyNote className="sidebar-icon" />
+        </Link>
+        <Link to="/edit-labels" className="sidebar-link">Edit Labels <FaPencil/> </Link>
           {labels.map((label) => (
             <li key={label.id} className="label-item">
               <button
@@ -33,7 +39,7 @@ const Sidebar = () => {
                   backgroundColor: label.color || '#ccc',
                 }}
               >
-                <FaStickyNote className="label-icon" />
+                <MdLabel/>  
                 {label.name}
               </button>
             </li>
