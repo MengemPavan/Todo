@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addLabel } from '../../Store/labelSlice';
+import './index.css';
 
 const AddLabel = () => {
   const [labelName, setLabelName] = useState('');
@@ -15,11 +16,11 @@ const AddLabel = () => {
 
   return (
     <div className="add-label">
-      <input 
-        type="text" 
-        placeholder="Add a label" 
-        value={labelName} 
-        onChange={(e) => setLabelName(e.target.value)} 
+      <input
+        type="text"
+        placeholder="Add a label"
+        value={labelName}
+        onChange={(e) => setLabelName(e.target.value)}
       />
       <button onClick={handleAddLabel}>Add Label</button>
     </div>

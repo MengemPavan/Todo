@@ -16,9 +16,14 @@ const notesSlice = createSlice({
       if (index !== -1) {
         state[index] = action.payload;
       }
-    }
-  }
-});
+    },
+    removeLabelFromTasks: (state, action) => {
+      state.tasks.forEach(task => {
+        task.labels = task.labels.filter(label => label !== action.payload);
+      });}
+     }
+})
 
-export const { addNote, deleteNote, editNote } = notesSlice.actions;
+
+export const { addNote, deleteNote, editNote,setFilterLabel,removeLabelFromTasks } = notesSlice.actions;
 export default notesSlice.reducer;

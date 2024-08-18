@@ -1,0 +1,49 @@
+.add-label {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .add-label input {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .add-label button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-label button:hover {
+    background-color: #45a049;
+  }
+
+
+  .add-more-labels-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-more-labels-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .add-label-section {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+ justify-content: center;
+  }

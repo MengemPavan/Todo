@@ -1,33 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import NoteItem from '../TaskItem';
+import NoteItem from '../TaskItem'; // Assuming you meant TaskItem
+import './index.css';
 
-const NoteList = () => {
-  const [filterLabel, setFilterLabel] = useState(null);
+const TaskList = () => {
   const notes = useSelector(state => state.notes);
-  const labels = useSelector(state => state.labels);
+  const filterLabelId = useSelector(state => state.labels.filterLabelId); // Accessing filterLabelId correctly
 
-  const filteredNotes = filterLabel
-    ? notes.filter(note => note.labels.includes(filterLabel))
+  // Filter notes based on the selected label
+  const filteredNotes = filterLabelId
+    ? notes.filter(note => note.labels.includes(filterLabelId))
     : notes;
 
   return (
     <div className="note-list">
-      <div className="filter-labels">
-        <select onChange={(e) => setFilterLabel(e.target.value)}>
-          <option value={null}>All Labels</option>
-          {labels.map(label => (
-            <option key={label.id} value={label.name}>
-              {label.name}
-            </option>
-          ))}
-        </select>
-      </div>
       {filteredNotes.map(note => (
-        <NoteItem key={note.id} note={note} />
+        <NoteItem key={note.id} note={note} /> // Assuming you meant NoteItem here
       ))}
     </div>
   );
 };
 
-export default NoteList;
+export default TaskList;

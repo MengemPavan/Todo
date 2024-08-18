@@ -1,0 +1,46 @@
+.note-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .note-item h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .note-item p {
+    color: #666;
+  }
+  
+  .labels {
+    margin-top: 8px;
+  }
+  
+  .label {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-size: 0.9em;
+    display: inline-block;
+  }
+  
+  .note-item button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .note-item button:hover {
+    background-color: #ff3333;
+  }
+  

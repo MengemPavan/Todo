@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteNote } from '../../Store/notesSlice';
+import './index.css';
 
 const NoteItem = ({ note }) => {
   const dispatch = useDispatch();

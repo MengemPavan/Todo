@@ -1,0 +1,63 @@
+.label-manager {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .add-label {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .add-label input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .add-label button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+  
+  .label-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .label-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+  }
+  
+  .label-item input {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .label-actions button {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #6c757d;
+  }
+  
+  .label-actions button:hover {
+    color: #007bff;
+  }
+  
