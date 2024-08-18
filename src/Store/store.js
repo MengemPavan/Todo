@@ -1,10 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import notesReducer from './notesSlice';
-import labelsReducer from './labelSlice';
+import rootReducer from "./rootReduser.js" ;// Import the root reducer
+import { loadState, saveState } from './localStorage'; // Your localStorage utilities
 
-export const store = configureStore({
-  reducer: {
-    notes: notesReducer,
-    labels: labelsReducer,
-  },
+// Load persisted state from localStorage
+const persistedState = loadState();
+
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState: persistedState, // Use the persisted state as the initial state
 });
+
+// Subscribe to store updates to save state to localStorage
+store.subscribe(() => {
+  saveState(store.getState());
+});
+
+export default store;
